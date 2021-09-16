@@ -1,0 +1,53 @@
+{% load static %}
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="{% static 'images/favicon.png' %}">
+    {% include 'Common/head_static_include.html' %}
+    <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body class="hold-transition skin-blue sidebar-mini {% if not request.user.is_authenticated %}login-page{% endif %}">
+{% if request.user.is_authenticated %}
+    <div class="wrapper">
+        {% include 'Common/main_header.html' %} {# 头部 #}
+        {% include 'Header/sidebar/main_sidebar.html' %} {# 侧边栏 #}
+        <div class="content-wrapper">
+            <section class="content-header">
+                <h1>
+                    {% block pages_title %}{% endblock %}
+                    <small>
+                        {% block pages_small_title %}{% endblock %}
+                    </small>
+                </h1>
+                {#                <ol class="breadcrumb">#}
+                {#                    <li>#}
+                {#                        <a href="/">#}
+                {#                            <i class="fa fa-dashboard"></i>首页#}
+                {#                        </a>#}
+                {#                    </li>#}
+                {#                    <li class="active">#}
+                {#                        {% block breadcrumbs %}{% endblock %}#}
+                {#                    </li>#}
+                {#                </ol>#}
+            </section>
+            <section class="content">
+                {% block dashboard %}{% endblock %}
+                {% block data_analysis_test %}{% endblock %}
+                {% block data_result %}{% endblock %}
+                {% block data_collect %}{% endblock %}
+            </section>
+        </div>
+        {% include 'Common/main_footer.html' %}
+        {% include 'Common/control_sidebar.html' %} {# 右侧控制中心 #}
+    </div>
+{% else %}
+    {% include 'Common/login.html' %}
+{% endif %}
+{% include 'Common/footer_static_include.html' %}
+</body>
+</html>

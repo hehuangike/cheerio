@@ -1,0 +1,41 @@
+.bw-chat-2 {
+    padding: 20px 10px 10px;
+}
+
+.runoob-logo {
+    width: 100%;
+}
+
+.bw_tips {
+    color: red;
+    text-align: center;
+    margin-top: 15%;
+    font-weight: bold;
+}
+
+.box-title {
+    font-weight: bold;
+}
+
+.breadcrumb-2 {
+    width: 100%;
+    float: left !important;
+    position: initial !important;
+}
+
+.bw-box {
+    border-top: 3px solid #ffffff;
+}
+
+.bw-table, .bw-table th {
+    text-align: center;
+    min-width: 100px;
+}
+
+.a-btn {
+    cursor: pointer;
+}
+
+.analysis_content {
+    color: #777;
+}

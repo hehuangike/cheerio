@@ -1,0 +1,35 @@
+<!-- 侧边栏菜单:style可以在Sidebar.less中找到 -->
+<ul class="sidebar-menu" data-widget="tree">
+    <li class="header">导航栏</li>
+    <li class="active">
+        <a href="/">
+            <i class="fa fa-dashboard"></i> <span>仪表盘</span>
+        </a>
+    </li>
+    <li class="header">数据分析</li>
+    <li>
+        <a href="{% url 'IKEdata:index' %}">
+            <i class="fa fa-edit"></i> <span>数据分析测试</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'IKEdata:collect' %}">
+            <i class="fa fa-table"></i> <span>数据采集</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'IKEdata:clean' %}">
+            <i class="fa fa-files-o"></i> <span>数据清洗</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'IKEdata:analysis' %}">
+            <i class="fa fa-bar-chart"></i> <span>数据分析</span>
+        </a>
+    </li>
+    <li>
+        <a href="{% url 'IKEdata:mining' %}">
+            <i class="fa fa-sitemap"></i> <span>数据挖掘</span>
+        </a>
+    </li>
+</ul>

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}数据分析测试{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet"
+          href="{% static 'adminlet-2.4.10/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
+{% endblock %}
+
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>数据分析测试</h1>
+        <form action={% url 'IKEdata:result' %} method="post">
+            <label>
+                {% csrf_token %}
+                <textarea type="text" name="context" style="width: 600px;height:180px"></textarea>
+            </label>
+            <br/>
+            <input type="submit" value="数据分析测试">
+        </form>
+    </section>
+{% endblock %}
+
+
+<script src="{% static 'adminlet-2.4.10/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'adminlet-2.4.10/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+

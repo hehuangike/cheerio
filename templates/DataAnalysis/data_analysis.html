@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}数据分析{% endblock %}
+{% block pages_title %}数据分析{% endblock %}
+{% block pages_small_title %}测试结果{% endblock %}
+{% block breadcrumbs %}数据分析-测试结果{% endblock %}
+{% block data_result %}
+    {% load static %}
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box">
+                <div class="box-header with-border">
+                <span class="box-title">
+                    <i class="fa fa-bar-chart-o"></i>
+                    <a href="{% url 'IKEdata:wordnet' %}">
+                        <span>知识图谱应用展示：词网</span>
+                    </a>
+                </span>
+                    <div class="box-tools">
+                        <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body chat">
+                    <p class="analysis_content">
+                        用了以后再追评一直用这个机油给车子保养，非常不错，相信京东自营。<br/>不错，美孚一号大牌子，京东自营值得信赖，爱车非常适用，已经用好多次京东买了，顺便购买了更换机油服务，一步到位，发动机很安静，油耗也降低了一点点，谁用谁知道，希望多搞点活动。<br/>一直用的银美孚一号
+                        价格合适 自己保养车更放心 物流很快 一直信赖京东自营的东西选机油，先选SN级的，这是最高级，SL级是低配款，0W-30的意思是机油适用零度，流动性30的。<br/>家中常备机油，便宜就先囤一个，一直用这个牌子推荐这家店铺非常不错哦第一次在京东平台上购买美孚一号，之前一直在市场上买，效果特别好，希望京东平台上的美孚保真保质，如果用的好，以后还会接着在京东上购买京东平台优惠力度大，值得推荐，大家快来抢购，以后还会在京东上购买，希望以后赠送礼品多点首先，金美孚一号这款油，一直用这个牌子，质量非常好，其次，京东自营下单，配送时效特别快，晚上下单第二天早上9点就收到了，省去了去实体店的苦恼，而且价格也非常优惠，有优惠券可以领，这款油保养周期长，相信京东自营商城，物流很快，拿去店里换的，维修师傅说有不错，换完车的噪声小了很多，还在在买的发动机是汽车的心脏，润滑油的好坏对车辆的健康与否密切相关。<br/>好评一直从京东购买这款美孚一号机油，每次一万公里保养一次。
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="col-lg-7">
+            <div class="box box-success box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">词云</h3>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <img class="runoob-logo" src="{% static "images/wordcloud_all.png" %}" alt="runoob-logo">
+                </div>
+                <!-- /.box-body -->
+            </div>
+        </section>
+        <section class="col-lg-5">
+            <div class="box box-danger box-solid">
+                <div class="box-header with-border">
+                    <h3 class="box-title">情感分析</h3>
+                </div>
+                <div class="box-body">
+                    <img class="runoob-logo" src="{% static "images/Emotion_Analyses.png" %}" alt="runoob-logo">
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="{% static 'AdminLTE-2.4/bower_components/jquery/dist/jquery.min.js' %}"></script>
+{% endblock %}

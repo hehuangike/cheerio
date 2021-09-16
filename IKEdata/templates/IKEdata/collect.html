@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}数据采集{% endblock %}
+
+{% block css %}
+
+{% endblock %}
+
+{% block breadcrumb %}
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            数据采集
+            <small>Data collect</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> 主页</a></li>
+            <li>数据采集</li>
+            <li class="active">资产详细</li>
+        </ol>
+    </section>
+{% endblock %}
+
+{% block content %}
+
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">所有数据<small>(包含测试数据)</small></h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="assets_table" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>序号</th>
+                                <th>来源</th>
+                                <th>内容</th>
+                                <th>作者</th>
+                                <th>时间</th>
+                                <th>链接</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {% for asset in all_data %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    {% if asset.source == 'JD' %}
+                                        <td class="text-green text-bold">{{ asset.get_source_display }}</td>
+                                    {% elif asset.source == "TEST" %}
+                                        <td class="text-yellow text-bold">{{ asset.get_source_display }}</td>
+                                    {% elif asset.source == "OTHER" %}
+                                        <td class="text-blue text-bold">{{ asset.get_source_display }}</td>
+                                    {% endif %}
+                                    <td>{{ asset.content }}</td>
+                                    <td>{{ asset.arthur }}</td>
+                                    <td>{{ asset.time }}</td>
+                                    <!--                  <td><a href="https://item.jd.com/5918444.html#comment">{{ asset.link }}</a></td>-->
+                                    <td><a href="{{ asset.link }}">{{ asset.link }}</a></td>
+                                </tr>
+                            {% empty %}
+                                <tr>没有数据！</tr>
+                            {% endfor %}
+
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>序号</th>
+                                <th>来源</th>
+                                <th>内容</th>
+                                <th>作者</th>
+                                <th>时间</th>
+                                <th>链接</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+
+
+{% endblock %}
+
+
+{% block script %}
+
+    <script src="{% static 'adminlet-2.4.10/bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+    <script src="{% static 'adminlet-2.4.10/bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js' %}"></script>
+
+    <script>
+        $(function () {
+            $('#assets_table').DataTable({
+                "paging": true,       <!-- 允许分页 -->
+                "lengthChange": true, <!-- 允许改变每页显示的行数 -->
+                "searching": true,    <!-- 允许内容搜索 -->
+                "ordering": true,     <!-- 允许排序 -->
+                "info": true,         <!-- 显示信息 -->
+                "autoWidth": false    <!-- 固定宽度 -->
+            });
+        });
+    </script>
+
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% block login_register %}
+
+    <div id="container">
+        <!-- Header -->
+        <div id="header">
+            <div id="branding">
+                <h1 id="site-name"><a href="/">宜氪数据&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></h1>
+            </div>
+        </div>
+        <!-- END Header -->
+        <div class="main shifted" id="main">
+            <div class="content">
+                <!-- Content -->
+                <div id="content" class="colM">
+                    <div id="content-main">
+                        <form action="{% url 'IKEdata:login' %}" method="post" id="login-form">
+                            {% csrf_token %}
+                            <div class="form-row">
+                                <label class="required" for="id_username">用户名:</label>
+                                <input type="text"
+                                       name="username"
+                                       autofocus=""
+                                       autocapitalize="none"
+                                       autocomplete="username"
+                                       maxlength="150"
+                                       required=""
+                                       id="id_username" value="ike">
+                            </div>
+                            <div class="form-row">
+                                <label class="required" for="id_password">密码:</label>
+                                <input type="password"
+                                       name="password"
+                                       autocomplete="current-password"
+                                       required=""
+                                       id="id_password" value="Password.123">
+                            </div>
+                            <div class="submit-row">
+                                <input type="submit" value="login">
+                            </div>
+                        </form>
+                    </div>
+                    <br class="clear">
+                </div>
+                <!-- END Content -->
+                <div id="footer">
+                    <p style="color: red;">{{ tips }}</p>
+                    <p>
+                        <strong>Copyright &copy; 2019
+                            <a href="http://www.ike-data.com/" target="_blank">上海宜氪数据科技有限公司</a>.
+                        </strong>
+                        All
+                        rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

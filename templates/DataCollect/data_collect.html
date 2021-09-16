@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}数据采集{% endblock %}
+{% block pages_title %}数据采集{% endblock %}
+{% block pages_small_title %}data collect{% endblock %}
+{% block breadcrumbs %}数据采集{% endblock %}
+{% block data_collect %}
+    {% load static %}
+    <div class="row">
+        <section class="col-lg-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">所有数据<small>(包含测试数据)</small></h3>
+                    {# TODO:搜索框与下拉框待完善 #}
+                    {#                <div class="box-tools">#}
+                    {#                    <div class="input-group input-group-sm hidden-xs" style="width: 150px;">#}
+                    {#                        <input type="text" name="table_search" class="form-control pull-right" placeholder="搜索">#}
+                    {#                        <div class="input-group-btn">#}
+                    {#                            <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>#}
+                    {#                        </div>#}
+                    {#                    </div>#}
+                    {#                </div>#}
+                </div>
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover table-striped table-bordered bw-table">
+                        <tbody>
+                        <tr>
+                            <th>序号</th>
+                            <th>来源</th>
+                            <th style="width: 250px">内容</th>
+                            <th>作者</th>
+                            <th>时间</th>
+                            <th>链接</th>
+                        </tr>
+                        {% for asset in page_obj.object_list %}
+                            <tr>
+                                <td>{{ asset.id }}</td>
+                                {% if asset.source == 'JD' %}
+                                    <td class="text-green text-bold">{{ asset.get_source_display }}</td>
+                                {% elif asset.source == "TEST" %}
+                                    <td class="text-yellow text-bold">{{ asset.get_source_display }}</td>
+                                {% elif asset.source == "OTHER" %}
+                                    <td class="text-blue text-bold">{{ asset.get_source_display }}</td>
+                                {% endif %}
+                                <td id="content_{{ forloop.counter }}" style="text-align: left">
+                                    {% if asset.content|length > 120 %}
+                                        {{ asset.content|slice:":120" }}...
+                                        <a class="a-btn"
+                                           onclick="showContent('content_{{ forloop.counter }}, {{ asset.content }}')">更多>></a>
+                                    {% else %}
+                                        {{ asset.content }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ asset.arthur }}</td>
+                                <td>{{ asset.time }}</td>
+                                <td><a href="{{ asset.link }}">{{ asset.link }}</a></td>
+                            </tr>
+                        {% empty %}
+                            <tr>没有数据！</tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {# TODO:分页展示间隔修复 #}
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        {% if page_obj.has_previous %}
+                            <li><a href="/collect/?p={{ page_obj.previous_page_number }}">«</a></li>
+                        {% endif %}
+                        {% for page in page_obj.paginator.page_range %}
+                            <li><a href="/collect/?p={{ page }}">{{ page }}</a></li>
+                        {% endfor %}
+                        {% if obj.has_next %}
+                            <li><a href="/collect/?p={{ page_obj.next_page_number }}">»</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="{% static 'AdminLTE-2.4/bower_components/jquery/dist/jquery.min.js' %}"></script>
+    <script>
+        function showContent(data) {
+            let d_click = data.split(',')
+            $('#' + d_click[0]).text(d_click[1])
+        }
+    </script>
+{% endblock %}
