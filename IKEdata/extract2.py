@@ -19,8 +19,9 @@ def extract(context):
     obj = SummaryTxt(os.path.join(BASE_DIR, 'IKEdata/stopwords-master/hit_stopwords.txt'))
     obj.summaryScoredtxt(context)
     extract_text = obj.summaryTopNtxt(context)
-    freq(total_articlelist)
-    return extract_text
+    # freq(total_articlelist)
+    keywords = freq(total_articlelist)
+    return extract_text, keywords
 
 
 # 文本处理
@@ -73,6 +74,13 @@ def freq(words_list):
             del_data.append(i)
     for i in del_data:
         data.remove(i)
+
+    def takeSecond(elem):
+        return elem[1]
+
+    data.sort(key=takeSecond, reverse=True)
+    data = data[0:8]
+
     x_index = range(len(data))
     x_data = [i[0] for i in data]
     y_data = [i[1] for i in data]
@@ -112,3 +120,5 @@ def freq(words_list):
     # mywc.to_file('../statics/images/wordcloud.png')
     # Without filename, paddle method is called and updated pic can't be got
     mywc.to_file(filename=os.path.join(BASE_DIR, 'static/images/wordcloud.png'))
+
+    return data

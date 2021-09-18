@@ -1,0 +1,127 @@
+{% load static %}
+{# 导航栏 #}
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    {# 左侧导航链接 #}
+    <ul class="navbar-nav">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fa fa-bars"></i></a>
+        </li>
+    </ul>
+
+    {# 右侧导航链接 #}
+    <ul class="navbar-nav ml-auto">
+        {# 导航栏搜索 #}
+        <li class="nav-item">
+            <a class="nav-link" data-widget="navbar-search" href="javascript:" role="button">
+                <i class="fa fa-search"></i>
+            </a>
+            <div class="navbar-search-block">
+                <form class="form-inline">
+                    <div class="input-group input-group-sm">
+                        <input class="form-control form-control-navbar" type="search" placeholder="搜索"
+                               aria-label="Search">
+                        <div class="input-group-append">
+                            <button class="btn btn-navbar" type="submit">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                                <i class="fa fa-times-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </li>
+        {# 全屏 #}
+        <li class="nav-item">
+            <a class="nav-link" data-widget="fullscreen" href="javascript:" role="button">
+                <i class="fa fa-arrows-alt"></i>
+            </a>
+        </li>
+        {# 设置 #}
+        <li class="nav-item">
+            <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="javascript:" role="button">
+                <i class="fa fa-cogs"></i>
+            </a>
+        </li>
+        {# 退出 #}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'IKEdata:sign_out' %}" role="button">
+                <i class="fa fa-sign-out"></i>
+            </a>
+        </li>
+    </ul>
+</nav>
+
+{# 抽屉内容 #}
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    {# Logo #}
+    <a href="javascript:" class="brand-link bw-sidebar-border">
+        <img src="{% static 'images/logo-small.png' %}" alt="AdminLTE Logo" class="brand-image">
+        <span class="brand-text font-weight-light">IKEdata</span>
+    </a>
+
+    {# 侧边栏 #}
+    <div class="sidebar">
+        {# 侧边栏菜单 #}
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                {# 可以使用.nav-icon类和font-awesome或任何其他图标字体库向链接添加图标 #}
+                <li class="nav-item">
+                    <a href="/" class="nav-link active" id="bw-dashboard" onclick="changeActive('#bw-dashboard')">
+                        <i class="nav-icon fa fa-tachometer"></i>
+                        <p>
+                            仪表盘
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-header">数据分析</li>
+                <li class="nav-item">
+                    <a href="{% url 'IKEdata:analysis_test' %}" class="nav-link" id="bw-data-test" onclick="changeActive('#bw-data-test')">
+                        <i class="nav-icon fa fa-edit"></i>
+                        <p>
+                            数据分析测试
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'IKEdata:collect' %}" class="nav-link" id="bw-collect" onclick="changeActive('#bw-collect')">
+                        <i class="nav-icon fa fa-table"></i>
+                        <p>
+                            数据采集
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'IKEdata:clean' %}" class="nav-link" id="bw-clean" onclick="changeActive('#bw-clean')">
+                        <i class="nav-icon fa fa-files-o"></i>
+                        <p>
+                            数据清洗
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'IKEdata:analysis' %}" class="nav-link" id="bw-analysis" onclick="changeActive('#bw-analysis')">
+                        <i class="nav-icon fa fa-bar-chart"></i>
+                        <p>
+                            数据分析
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="{% url 'IKEdata:mining' %}" class="nav-link" id="bw-mining" onclick="changeActive('#bw-mining')">
+                        <i class="nav-icon fa fa-sitemap"></i>
+                        <p>
+                            数据挖掘
+                        </p>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</aside>
+<script>
+    function changeActive(id) {
+        $(id).addClass('active')
+    }
+</script>

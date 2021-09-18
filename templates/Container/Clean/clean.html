@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block tab_title %}数据清洗<small>Clean</small>{% endblock %}
+{% block breadcrumb_links %}
+    <li class="breadcrumb-item active">数据清洗</li>
+{% endblock %}
+{% block clean %}
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <blockquote class="quote-info">
+                        <ol>
+                            <li><a href="javascript:">新词与词性</a></li>
+                            <li><a href="javascript:">停用词</a></li>
+                            <li><a href="javascript:">同义词替换</a></li>
+                            <li><a href="javascript:">语义分析</a></li>
+                            <li><a href="javascript:">评论筛选</a></li>
+                            <li><a href="javascript:">主数据标签清洗</a></li>
+                        </ol>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

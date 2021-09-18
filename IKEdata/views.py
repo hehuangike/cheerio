@@ -5,7 +5,6 @@ import os
 import pandas as pd
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import HttpResponse, redirect
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
@@ -14,10 +13,6 @@ from IKE.settings import BASE_DIR
 from IKEdata import asset_handler
 from IKEdata import models
 from . import extract2
-
-
-def index(request):
-    return render(request, 'DataAnalysis/data_analysis_test.html', None)
 
 
 def loginto(request):
@@ -82,14 +77,15 @@ def dashboard(request):
     positive_no = jd_no * 0.99
     negative_no = jd_no * 0.01
     #     Input one page for text analysis
-    return render(request, 'Container/dashboard.html', locals())
+    return render(request, 'Container/Dashboard/dashboard.html', locals())
 
 
-def result(request):
-    context = request.POST['context']
+def analysis_test(request):
+    context = request.POST.get('context', None)
     extract_text = ''
+    analysis_result = False
     if context:
-        extract_text = extract2.extract(context)
+        extract_text, keywords = extract2.extract(context)
         models.collect.objects.create(
             source='TEST',
             content=context.replace('\r', '').replace('\n', ''),
@@ -97,8 +93,15 @@ def result(request):
             time=datetime.datetime.now(),
             link='',
         )
-    #     Input one page for text analysis
-    return render(request, 'DataAnalysis/data_result.html', {"context": context, "extract_text": extract_text})
+        analysis_result = True
+    return render(
+        request, 'Container/Analysis/analysisTest.html',
+        {
+            "context": context,
+            "extract_text": extract_text,
+            'analysis_result': analysis_result
+        }
+    )
 
 
 def collect(request):
@@ -117,12 +120,12 @@ def collect(request):
     #     page_obj = paginator.page(1)
     # except PageNotAnInteger as not_int_err:
     #     page_obj = paginator.page(1)
-    return render(request, 'DataCollect/data_collect_02.html', {"all_data": all_data})
+    return render(request, 'Container/Collect/collect.html', {"all_data": all_data})
 
 
 def clean(request):
     #   DataClean data
-    return render(request, 'DataClean/clean.html', locals())
+    return render(request, 'Container/Clean/clean.html', locals())
 
 
 def analysis(request):
@@ -136,12 +139,12 @@ def analysis(request):
     #         exit()
     # extract_text = analyse_text.extract(comments)
     #   Display key words, word cloud, word net, text abstract
-    return render(request, 'DataAnalysis/data_analysis.html', locals())
+    return render(request, 'Container/Analysis/analysis.html', locals())
 
 
 def mining(request):
     #   To be updated
-    return render(request, 'DataMining/data_mining.html', locals())
+    return render(request, 'Container/Mining/mining.html', locals())
 
 
 def wordnet(request):

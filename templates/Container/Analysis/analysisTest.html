@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% load static %}
+{% block tab_title %}
+    {% if analysis_result %}
+        数据分析测试结果<small>Analysis Test Result</small>
+    {% else %}
+        数据分析测试<small>Analysis Test</small>
+    {% endif %}
+{% endblock %}
+{% block breadcrumb_links %}
+    {% if analysis_result %}
+        <li class="breadcrumb-item active">数据分析测试结果</li>
+    {% else %}
+        <li class="breadcrumb-item active">数据分析测试</li>
+    {% endif %}
+{% endblock %}
+{% block analysis_test %}
+    {% if analysis_result %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-outline card-info">
+                    <div class="card-header">
+                        <h3 class="card-title bw-card-title">测试数据</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {{ context }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card card-outline card-warning">
+                    <div class="card-header">
+                        <h3 class="card-title bw-card-title">自动摘要</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        {{ extract_text }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-7">
+                <div class="card card-outline card-success">
+                    <div class="card-header">
+                        <h3 class="card-title bw-card-title">词云</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <img class="wordcloud" src="{% static 'images/wordcloud.png' %}" alt="wordcloud">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card card-outline card-danger">
+                    <div class="card-header">
+                        <h3 class="card-title bw-card-title">关键字</h3>
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <img class="wordcloud" src="{% static 'images/plt.png' %}" alt="wordcloud">
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-outline card-dark">
+                    <div class="card-header">
+                        {#                        <h3 class="card-title bw-card-title">数据分析测试</h3>#}
+                        <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                    class="fa fa-minus"></i></button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form action="{% url 'IKEdata:analysis_test' %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <textarea class="form-control" rows="15" placeholder="输入测试内容" name="context"></textarea>
+                            </div>
+                            <div class="row">
+                                <div class="col-1">
+                                    <button type="submit" class="btn btn-block bg-gradient-info btn-lg">提交测试</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

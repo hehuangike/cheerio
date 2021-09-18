@@ -1,34 +1,37 @@
-.bw-chat-2 {
-    padding: 20px 10px 10px;
+a {
+    color: #17a2b8;
 }
 
-.runoob-logo {
+a:hover {
+    color: #3b92a0;
+}
+
+table .sorting_asc, table .sorting_desc, table .sorting {
+    background-image: url(../images/sort_asc.png);
+    background-size: 16px;
+    background-position-x: 95%;
+}
+
+.bw-sidebar-border {
+    margin-bottom: 5px;
+}
+
+.wordcloud {
     width: 100%;
 }
 
-.bw_tips {
-    color: red;
-    text-align: center;
-    margin-top: 15%;
+.bw-card-title-link {
     font-weight: bold;
 }
 
-.box-title {
-    font-weight: bold;
+.content-header h1 small {
+    font-size: 15px;
+    display: inline-block;
+    padding-left: 4px;
+    font-weight: 300;
 }
 
-.breadcrumb-2 {
-    width: 100%;
-    float: left !important;
-    position: initial !important;
-}
-
-.bw-box {
-    border-top: 3px solid #ffffff;
-}
-
-.bw-table, .bw-table th {
-    text-align: center;
+#ikedata-tables th {
     min-width: 100px;
 }
 
@@ -36,6 +39,10 @@
     cursor: pointer;
 }
 
-.analysis_content {
-    color: #777;
+@media (max-width: 991px) {
+    .content-header .breadcrumb {
+        padding-left: 10px;
+        margin-top: 20px;
+        background-color: #d2d6de !important;
+    }
 }
