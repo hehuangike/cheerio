@@ -44,7 +44,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="BwSortable">
         <div class="col-lg-6 col-12">
             <div class="card card-outline card-dark">
                 <div class="card-header">
@@ -74,4 +74,13 @@
             </div>
         </div>
     </div>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script>
+        {# 拖动block #}
+        $(function () {
+            let bs = $("#BwSortable")
+            bs.sortable();
+            bs.disableSelection();
+        });
+    </script>
 {% endblock %}

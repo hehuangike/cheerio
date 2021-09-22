@@ -39,6 +39,14 @@ table .sorting_asc, table .sorting_desc, table .sorting {
     cursor: pointer;
 }
 
+.login-box-msg {
+    color: #17a2b8;
+}
+
+#BwSortable .card-header {
+    cursor: all-scroll;
+}
+
 @media (max-width: 1366px) {
     #ikedata-tables_wrapper {
         overflow: auto;

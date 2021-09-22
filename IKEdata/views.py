@@ -42,6 +42,8 @@ def loginto(request):
 
 
 def sign_out(request):
+    # if user.is_active:
+    #     return redirect('IKEdata:dashboard')
     logout(request)
     tips = '您已退出登录'
     return render(request, 'base.html', {'tips': tips})
