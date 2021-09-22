@@ -39,6 +39,12 @@ table .sorting_asc, table .sorting_desc, table .sorting {
     cursor: pointer;
 }
 
+@media (max-width: 1366px) {
+    #ikedata-tables_wrapper {
+        overflow: auto;
+    }
+}
+
 @media (max-width: 991px) {
     .content-header .breadcrumb {
         padding-left: 10px;
