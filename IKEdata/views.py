@@ -54,7 +54,6 @@ def dashboard(request):
     total_no = models.collect.objects.count()
     if total_no == 0:
         df = pd.read_excel(os.path.join(BASE_DIR, 'IKEdata/京东商品评论.xlsx'), sheet_name='Sheet1')
-        print(len(df.index.values), 123)
         for j in range(len(df.index.values)):
             i = j + 1
             content = df.iloc[i, 3]
