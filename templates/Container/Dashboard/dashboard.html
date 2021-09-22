@@ -1,5 +1,12 @@
 {% extends 'base.html' %}
 {% load static %}
+{% block title %}
+    {% if request.user.is_authenticated %}
+        仪表盘
+    {% else %}
+        登录
+    {% endif %}
+{% endblock %}
 {% block tab_title %}仪表盘<small>Dashboard</small>{% endblock %}
 {% block breadcrumb_links %}
     <li class="breadcrumb-item active">仪表盘</li>

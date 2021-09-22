@@ -1,6 +1,13 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% load static %}
+{% block title %}
+    {% if analysis_result %}
+        数据分析测试结果
+    {% else %}
+        数据分析测试
+    {% endif %}
+{% endblock %}
 {% block tab_title %}
     {% if analysis_result %}
         数据分析测试结果<small>Analysis Test Result</small>
