@@ -14,5 +14,5 @@ urlpatterns = [
     path('mining/', views.mining, name='mining'),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('wordnet/', views.wordnet, name='wordnet'),
-    path('', views.dashboard),
+    path('', views.dashboard, name='home'),
 ]
