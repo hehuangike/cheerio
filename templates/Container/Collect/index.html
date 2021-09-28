@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}数据采集{% endblock %}
+{% block page_title %}数据采集{% endblock %}
+{% block page_title_small %}Collect{% endblock %}
+{% block bread_crumbs %}
+    <li class="mdui-float-left"><small>数据采集</small></li>
+    <li class="mdui-float-left" style="margin: 0 5px"><small>/</small></li>
+{% endblock %}
+{% block collect %}
+    <link rel="stylesheet" href="{% static 'css/jquery.dataTables.min.css' %}">
+    <div class="row mdui-typo">
+        <div class="mdui-col-xs-12">
+            <div class="mdui-table-fluid" id="ike-data-tables">
+                <table id="ikedata-tables" class="mdui-table mdui-table-hoverable">
+                    <thead style="background-color: #eee;">
+                    <tr>
+                        <th id="bw-table-id">序号</th>
+                        <th id="bw-table-source">来源</th>
+                        <th id="bw-table-content">内容</th>
+                        <th id="bw-table-author">作者</th>
+                        <th id="bw-table-time">时间</th>
+                        <th id="bw-table-link">链接</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for asset in all_data %}
+                        <tr>
+                            <td>{{ asset.id }}</td>
+                            <td class="{% if asset.source == 'JD' %}mdui-text-color-green-800{% elif asset.source == "TEST" %}mdui-text-color-yellow-800{% elif asset.source == "OTHER" %}mdui-text-color-blue-800{% endif %}">{{ asset.get_source_display }}</td>
+                            <td id="content_{{ forloop.counter }}">
+                                {% if asset.content|length > 80 %}
+                                    {{ asset.content|slice:":80" }}...
+                                    <a class="a-btn"
+                                       onclick="showContent(['content_{{ forloop.counter }}', '{{ asset.content|safe }}'])">更多>></a>
+                                {% else %}
+                                    {{ asset.content }}
+                                {% endif %}
+                            </td>
+                            <td>{{ asset.arthur }}</td>
+                            <td>{{ asset.time }}</td>
+                            <td><a href="{{ asset.link }}">{{ asset.link }}</a></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="{% static 'js/jquery.dataTables.min.js' %}"></script>
+    <script>
+        $(function () {
+            $('#ikedata-tables').DataTable({
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': false,
+                'autoWidth': false,
+                language: {
+                    "processing": "处理中...",
+                    "lengthMenu": "显示 _MENU_ 项结果",
+                    "zeroRecords": "没有匹配结果",
+                    "info": "显示第 _START_ 至 _END_ 项结果，共 _TOTAL_ 项",
+                    "infoEmpty": "显示第 0 至 0 项结果，共 0 项",
+                    "infoFiltered": "(由 _MAX_ 项结果过滤)",
+                    "infoPostFix": "",
+                    "search": "搜索:",
+                    "searchPlaceholder": "搜索...",
+                    "url": "",
+                    "emptyTable": "表中数据为空",
+                    "loadingRecords": "载入中...",
+                    "infoThousands": ",",
+                    "paginate": {
+                        "first": "首页",
+                        "previous": "上页",
+                        "next": "下页",
+                        "last": "末页"
+                    },
+                    "aria": {
+                        "paginate": {
+                            "first": "首页",
+                            "previous": "上页",
+                            "next": "下页",
+                            "last": "末页"
+                        },
+                        "sortAscending": "以升序排列此列",
+                        "sortDescending": "以降序排列此列"
+                    },
+                    "thousands": "."
+                }
+            });
+        });
+    </script>
+    <script>
+        function showContent(data) {
+            console.log(data[1])
+            $('#' + data[0]).text(data[1])
+        }
+    </script>
+{% endblock %}

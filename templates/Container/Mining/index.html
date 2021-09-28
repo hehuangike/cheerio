@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}数据挖掘{% endblock %}
+{% block page_title %}数据挖掘{% endblock %}
+{% block page_title_small %}Mining{% endblock %}
+{% block bread_crumbs %}
+    <li class="mdui-float-left"><small>数据挖掘</small></li>
+    <li class="mdui-float-left" style="margin: 0 5px"><small>/</small></li>
+{% endblock %}
+{% block mining %}
+    <div class="row mdui-typo">
+        <div class="mdui-col-xs-12">
+            <div class="mdui-card bw-md-card mdui-hoverable">
+                <div class="mdui-card-content">
+                    <ol>
+                        <li><a href="javascript:">神经网络</a></li>
+                        <li><a href="javascript:">相关性分析</a></li>
+                        <li><a href="javascript:">组合分析</a></li>
+                        <li><a href="javascript:">选择模型</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

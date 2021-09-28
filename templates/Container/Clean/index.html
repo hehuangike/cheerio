@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}数据清洗{% endblock %}
+{% block page_title %}数据清洗{% endblock %}
+{% block page_title_small %}Clean{% endblock %}
+{% block bread_crumbs %}
+    <li class="mdui-float-left"><small>数据清洗</small></li>
+    <li class="mdui-float-left" style="margin: 0 5px"><small>/</small></li>
+{% endblock %}
+{% block clean %}
+    <div class="row mdui-typo">
+        <div class="mdui-col-xs-12">
+            <div class="mdui-card bw-md-card mdui-hoverable">
+                <div class="mdui-card-content">
+                    <ol>
+                        <li><a href="javascript:">新词与词性</a></li>
+                        <li><a href="javascript:">停用词</a></li>
+                        <li><a href="javascript:">同义词替换</a></li>
+                        <li><a href="javascript:">语义分析</a></li>
+                        <li><a href="javascript:">评论筛选</a></li>
+                        <li><a href="javascript:">主数据标签清洗</a></li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

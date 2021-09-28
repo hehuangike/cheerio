@@ -1,115 +1,77 @@
 {% extends 'base.html' %}
-{% load i18n %}
 {% load static %}
-{% block title %}
-    {% if analysis_result %}
-        数据分析测试结果
-    {% else %}
-        数据分析测试
-    {% endif %}
-{% endblock %}
-{% block tab_title %}
-    {% if analysis_result %}
-        数据分析测试结果<small>Analysis Test Result</small>
-    {% else %}
-        数据分析测试<small>Analysis Test</small>
-    {% endif %}
-{% endblock %}
-{% block breadcrumb_links %}
-    {% if analysis_result %}
-        <li class="breadcrumb-item active">数据分析测试结果</li>
-    {% else %}
-        <li class="breadcrumb-item active">数据分析测试</li>
-    {% endif %}
+{% block title %}数据分析测试{% if analysis_result %}结果{% endif %}{% endblock %}
+{% block page_title %}数据分析测试{% if analysis_result %}结果{% endif %}{% endblock %}
+{% block page_title_small %}Analysis Test {% if analysis_result %}Result{% endif %}{% endblock %}
+{% block bread_crumbs %}
+    <li class="mdui-float-left"><small>数据分析测试{% if analysis_result %}结果{% endif %}</small></li>
+    <li class="mdui-float-left" style="margin: 0 5px"><small>/</small></li>
 {% endblock %}
 {% block analysis_test %}
-    {% if analysis_result %}
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-outline card-info">
-                    <div class="card-header">
-                        <h3 class="card-title bw-card-title">测试数据</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fa fa-minus"></i></button>
+    <div class="row mdui-typo">
+        {% if analysis_result %}
+            <div class="mdui-col-xs-12">
+                <div class="mdui-card bw-md-card mdui-hoverable">
+                    <div class="mdui-card-media">
+                        <div class="mdui-card-media-covered bw-custom-covered bw-custom-covered-blue-grey mdui-clearfix">
+                            <div class="mdui-card-primary">
+                                <div class="mdui-typo-title-opacity" style="font-weight:700;">测试数据</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="mdui-card-content">
                         {{ context }}
                     </div>
                 </div>
             </div>
-            <div class="col-12">
-                <div class="card card-outline card-warning">
-                    <div class="card-header">
-                        <h3 class="card-title bw-card-title">自动摘要</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fa fa-minus"></i></button>
+            <div class="mdui-col-xs-12">
+                <div class="mdui-card bw-md-card mdui-hoverable">
+                    <div class="mdui-card-media">
+                        <div class="mdui-card-media-covered bw-custom-covered bw-custom-covered-blue-grey mdui-clearfix">
+                            <div class="mdui-card-primary">
+                                <div class="mdui-typo-title-opacity" style="font-weight:700;">自动摘要</div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card-body">
+                    <div class="mdui-card-content">
                         {{ extract_text }}
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-7">
-                <div class="card card-outline card-success">
-                    <div class="card-header">
-                        <h3 class="card-title bw-card-title">词云</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
-                        <img class="wordcloud" src="{% static 'images/wordcloud.png' %}" alt="wordcloud">
+            <div class="mdui-col-xs-12 mdui-col-sm-7">
+                <div class="mdui-card bw-md-card mdui-hoverable">
+                    <div class="mdui-card-content">词云</div>
+                    <div class="mdui-card-media">
+                        <img src="{% static 'images/wordcloud.png' %}" alt=""/>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-5">
-                <div class="card card-outline card-danger">
-                    <div class="card-header">
-                        <h3 class="card-title bw-card-title">关键字</h3>
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fa fa-minus"></i></button>
-                        </div>
-                    </div>
-                    <div class="card-body">
+            <div class="mdui-col-xs-12 mdui-col-sm-5">
+                <div class="mdui-card bw-md-card mdui-hoverable">
+                    <div class="mdui-card-content">关键字</div>
+                    <div class="mdui-card-media">
                         <img class="wordcloud" src="{% static 'images/plt.png' %}" alt="wordcloud">
                     </div>
                 </div>
             </div>
-        </div>
-    {% else %}
-        <div class="row">
-            <div class="col-12">
-                <div class="card card-outline card-dark">
-                    <div class="card-header">
-                        {#                        <h3 class="card-title bw-card-title">数据分析测试</h3>#}
-                        <div class="card-tools">
-                            <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                                    class="fa fa-minus"></i></button>
+        {% else %}
+            <div class="mdui-col-xs-12">
+                <div class="mdui-card bw-md-card">
+                    <form action="{% url 'IKEdata:analysis_test' %}" method="post">
+                        {% csrf_token %}
+                        <div class="mdui-card-content">
+                            <div class="mdui-textfield">
+                            <textarea class="mdui-textfield-input" placeholder="输入测试内容" name="context"
+                                      required="required"></textarea>
+                                <div class="mdui-textfield-helper">目前只支持输入中文</div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="card-body">
-                        <form action="{% url 'IKEdata:analysis_test' %}" method="post">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <textarea class="form-control" rows="15" placeholder="输入测试内容" name="context"></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="col-1">
-                                    <button type="submit" class="btn btn-block bg-gradient-info btn-lg">提交测试</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                        <div class="mdui-card-actions">
+                            <button class="mdui-btn mdui-ripple bw-btn-blue-grey" type="submit">测试</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-        </div>
-    {% endif %}
+        {% endif %}
+    </div>
 {% endblock %}

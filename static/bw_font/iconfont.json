@@ -1,0 +1,58 @@
+{
+  "id": "2836107",
+  "name": "ike_cherrio",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "9833309",
+      "name": "数据挖掘",
+      "font_class": "shujuwajue",
+      "unicode": "e916",
+      "unicode_decimal": 59670
+    },
+    {
+      "icon_id": "1029946",
+      "name": "edit",
+      "font_class": "edit",
+      "unicode": "e74c",
+      "unicode_decimal": 59212
+    },
+    {
+      "icon_id": "1057265",
+      "name": "automation",
+      "font_class": "automation",
+      "unicode": "e788",
+      "unicode_decimal": 59272
+    },
+    {
+      "icon_id": "1469178",
+      "name": "cloud-o",
+      "font_class": "cloud-o",
+      "unicode": "e849",
+      "unicode_decimal": 59465
+    },
+    {
+      "icon_id": "1469194",
+      "name": "dotchart",
+      "font_class": "dotchart",
+      "unicode": "e84e",
+      "unicode_decimal": 59470
+    },
+    {
+      "icon_id": "1469299",
+      "name": "save",
+      "font_class": "save",
+      "unicode": "e873",
+      "unicode_decimal": 59507
+    },
+    {
+      "icon_id": "1029984",
+      "name": "dashboard",
+      "font_class": "dashboard",
+      "unicode": "e764",
+      "unicode_decimal": 59236
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{% load static %}
+<div class="mdui-appbar mdui-shadow-0 mdui-appbar-fixed"
+     style="background-image: url('{% static "images/mask2.png" %}')">
+    <div class="mdui-toolbar toolBar">
+        <a href="javascript:" class="mdui-btn mdui-btn-icon" mdui-drawer="{target: '#left-drawer'}">
+            <i class="mdui-icon material-icons">menu</i>
+        </a>
+        <a href="/" class="bw-logo">
+            <img src="{% static 'images/logo_normal_w.png' %}" alt="">
+        </a>
+        <div class="mdui-toolbar-spacer"></div>
+        <a href="{% url "IKEdata:sign_out" %}" class="mdui-btn mdui-btn-icon">
+            <i class="mdui-icon material-icons">&#xe879;</i>
+        </a>
+    </div>
+</div>
+
+<div class="mdui-drawer sideBar" id="left-drawer">
+    <ul class="mdui-list" mdui-collapse="{accordion: true}">
+        <li class="mdui-list-item mdui-ripple {% if current == 'dashboard' %}bw-item-current{% endif %}">
+            <span class="iconfont icon-dashboard mdui-list-item-icon mdui-icon material-icons mdui-text-color-white-icon"></span>
+            <a href="{% url 'IKEdata:dashboard' %}" class="mdui-list-item-content">仪表盘</a>
+        </li>
+        <li class="mdui-list-item mdui-ripple {% if current == 'analysis_test' or current == 'analysis_result' %}bw-item-current{% endif %}">
+            <span class="iconfont icon-edit mdui-list-item-icon mdui-icon material-icons mdui-text-color-white-icon"></span>
+            <a href="{% url 'IKEdata:analysis_test' %}" class="mdui-list-item-content">数据分析测试</a>
+        </li>
+        <li class="mdui-list-item mdui-ripple {% if current == 'collect' %}bw-item-current{% endif %}">
+            <span class="iconfont icon-save mdui-list-item-icon mdui-icon material-icons mdui-text-color-white-icon"></span>
+            <a href="{% url 'IKEdata:collect' %}" class="mdui-list-item-content">数据采集</a>
+        </li>
+        <li class="mdui-list-item mdui-ripple {% if current == 'clean' %}bw-item-current{% endif %}">
+            <span class="iconfont icon-cloud-o mdui-list-item-icon mdui-icon material-icons mdui-text-color-white-icon"></span>
+            <a href="{% url 'IKEdata:clean' %}" class="mdui-list-item-content">数据清洗</a>
+        </li>
+        <li class="mdui-list-item mdui-ripple {% if current == 'analysis' %}bw-item-current{% endif %}">
+            <span class="iconfont icon-dotchart mdui-list-item-icon mdui-icon material-icons mdui-text-color-white-icon"></span>
+            <a href="{% url 'IKEdata:analysis' %}" class="mdui-list-item-content">数据分析</a>
+        </li>
+        <li class="mdui-list-item mdui-ripple {% if current == 'mining' %}bw-item-current{% endif %}">
+            <span class="iconfont icon-shujuwajue mdui-list-item-icon mdui-icon material-icons mdui-text-color-white-icon"></span>
+            <a href="{% url "IKEdata:mining" %}" class="mdui-list-item-content">数据挖掘</a>
+        </li>
+    </ul>
+</div>

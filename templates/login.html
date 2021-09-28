@@ -1,52 +1,27 @@
 {% load static %}
-{% block title %}登录{% endblock %}
-<link rel="stylesheet" href="{% static 'css/icheck-bootstrap.css' %}">
-<div class="login-box">
-    <div class="card card-outline card-primary">
-        <div class="card-header text-center">
-            <a href="/" class="h1"><b>IKE</b>data</a>
-        </div>
-        <div class="card-body">
-            <p class="login-box-msg">请输入您的账号信息</p>
-            <form action="{% url 'IKEdata:login' %}" method="post">
-                {% csrf_token %}
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="账号" name="username">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fa fa-user"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input type="password" class="form-control" placeholder="密码" name="password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fa fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-{#                    <div class="col-8">#}
-{#                        <div class="icheck-primary">#}
-{#                            <input type="checkbox" id="remember">#}
-{#                            <label for="remember">#}
-{#                                Remember Me#}
-{#                            </label>#}
-{#                        </div>#}
-{#                    </div>#}
-                    <div class="col-12">
-                        <button type="submit" class="btn btn-primary btn-block">登录</button>
-                    </div>
-                </div>
-            </form>
-            {# <p class="mb-1"> #}
-            {#     <a href="javascript:">忘记密码?</a> #}
-            {# </p> #}
-            {# <p class="mb-0"> #}
-            {#     <a href="javascript:" class="text-center">加入我们</a> #}
-            {# </p> #}
-            <p style="color: red; font-weight: bold;">{{ tips }}</p>
+<form action="{% url 'IKEdata:login' %}" method="post">
+    {% csrf_token %}
+    <div class="mdui-valign login-card">
+        <div class="mdui-center mdui-typo mdui-shadow-4 bw-login-center">
+            <h1 class="mdui-text-center">宜氪数据 <small>IKE-data</small></h1>
+            <p class="mdui-center">
+                <label>
+                    <i class="mdui-icon material-icons">&#xe851;</i>
+                    <input type="text" name="username" placeholder="账号">
+                </label>
+            </p>
+            <p class="mdui-center">
+                <label>
+                    <i class="mdui-icon material-icons">&#xe897;</i>
+                    <input type="password" name="password" placeholder="密码">
+                </label>
+            </p>
+            <p class="mdui-center">
+                <button class="mdui-btn mdui-ripple" type="submit">登录</button>
+            </p>
+            <p class="mdui-text-center tips">
+                {% if tips %}<i class="mdui-icon material-icons">&#xe001;</i>{{ tips }}{% endif %}
+            </p>
         </div>
     </div>
-</div>
+</form>

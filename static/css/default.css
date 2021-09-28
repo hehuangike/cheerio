@@ -1,62 +1,226 @@
 a {
-    color: #17a2b8;
+    color: #327ABC !important;
 }
 
-a:hover {
-    color: #3b92a0;
+.sideBar a, .toolBar a {
+    color: #FFF !important;
 }
 
-table .sorting_asc, table .sorting_desc, table .sorting {
-    background-image: url(../images/sort_asc.png);
-    background-size: 16px;
-    background-position-x: 95%;
+.toolBar {
+    background: linear-gradient(45deg, #327ABC 30%, #479EF3 90%);
+    border: 0;
+    color: white;
 }
 
-.bw-sidebar-border {
-    margin-bottom: 5px;
+.mdui-appbar {
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
 }
 
-.wordcloud {
-    width: 100%;
+.bw-item-current {
+    background-color: rgba(255, 255, 255, .2);
 }
 
-.bw-card-title-link {
-    font-weight: bold;
+.sideBar {
+    /*background: linear-gradient(0deg, #8cb6c1 10%, #37474F 100%);*/
+    background: #0A1927;
+    border: 0;
+    color: white;
 }
 
-.content-header h1 small {
-    font-size: 15px;
-    display: inline-block;
-    padding-left: 4px;
-    font-weight: 300;
+.bw-logo {
+    margin-top: 32px;
 }
 
-#ikedata-tables th {
-    min-width: 100px;
+.bw-logo img {
+    width: 135px;
+}
+
+.bw-search-btn {
+    right: 60px;
+    min-width: auto;
+    height: 47px;
+    border-radius: 0 10px 10px 0;
+    padding-top: 4px;
+    bottom: 1px;
+}
+
+.bw-container-title h1 small {
+    margin-left: 10px;
+}
+
+.bw-md-card {
+    margin: 16px auto;
+    border-radius: 5px;
+}
+
+.bw-md-card .bw-md-card-primary {
+    padding: 0;
+}
+
+.bw-md-card h1 {
+    margin: 1.67rem;
+}
+
+.bw-md-card .bw-md-icon {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    font-size: 5rem;
+    color: rgba(0, 0, 0, 0.2);
+}
+
+.bw-md-card .bw-custom-covered {
+    position: inherit;
+    background: rgba(0, 0, 0, 0);
+    border-bottom: 2px solid #eee;
+    color: #242424;
+}
+
+.bw-md-card .bw-custom-covered .mdui-card-primary {
+    padding: 8px;
+}
+
+.bw-custom-covered-blue-grey {
+    border-top: 3px solid #455A64;
+}
+
+.bw-btn-blue-grey {
+    background-color: #327ABC;
+    color: #ffffff;
+}
+
+.bw-btn-blue-grey:hover {
+    background-color: #3b92a0;
 }
 
 .a-btn {
     cursor: pointer;
 }
 
-.login-box-msg {
-    color: #17a2b8;
+/*数据采集的表格*/
+table .sorting_asc, table .sorting_desc, table .sorting {
+    background-image: url(../images/sort_asc.png);
+    background-size: 16px;
+    background-position-x: 95%;
 }
 
-#BwSortable .card-header {
-    cursor: all-scroll;
+#ikedata-tables th {
+    min-width: 100px;
 }
 
-@media (max-width: 1366px) {
-    #ikedata-tables_wrapper {
-        overflow: auto;
+#ikedata-tables #bw-table-content {
+    min-width: 500px;
+}
+
+#ike-data-tables {
+    padding: 16px;
+    box-sizing: border-box;
+    margin: 25px 0;
+}
+
+#ikedata-tables_length {
+    padding-bottom: 16px;
+}
+
+#ikedata-tables_length select, #ikedata-tables_filter input {
+    border: 1px solid #999;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+#ikedata-tables_length select:focus, #ikedata-tables_filter input:focus {
+    outline: none;
+}
+
+#ikedata-tables_paginate {
+    float: left;
+    height: 35px;
+    margin-top: 20px;
+}
+
+#ikedata-tables_paginate a, #ikedata-tables_paginate a:before {
+    background: unset;
+    font-size: .5rem;
+    min-width: 48px;
+    border: 0;
+}
+
+#ikedata-tables_paginate a:before {
+    border: 0;
+}
+
+#ikedata-tables_paginate a:hover {
+    color: #242424 !important;
+    border: 1px solid #eee;
+}
+
+#ikedata-tables_paginate .current {
+    background-color: #327ABC;
+    color: #ffffff !important;
+}
+
+@media (max-width: 1023px) {
+    .bw_bread_crumbs ul {
+        float: left;
+        padding: 0 5px;
+        background-color: #eee;
+        width: 100%;
+        box-sizing: border-box;
+        border-radius: 5px;
+        margin-top: 5px;
     }
 }
 
-@media (max-width: 991px) {
-    .content-header .breadcrumb {
-        padding-left: 10px;
-        margin-top: 20px;
-        background-color: #d2d6de !important;
+@media (min-width: 1024px) {
+    .bw_bread_crumbs ul {
+        float: right;
+        margin-top: 2.8rem !important;
     }
+}
+
+.login-card input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #999;
+    margin-bottom: 10px;
+}
+
+.login-card {
+    padding-top: 160px;
+    padding-bottom: 50px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-card input:focus {
+    outline: none;
+}
+
+.login-card i {
+    font-size: 18px;
+    padding: 4px 4px 5px;
+    margin-right: -4px;
+    color: #999;
+}
+
+.login-card button {
+    background-color: #327ABC;
+    color: #ffffff !important;
+    width: 100%;
+}
+
+.login-card button:hover {
+    background-color: #7ac5d9;
+}
+
+.login-card .tips, .login-card .tips i {
+    color: #b71c1c;
+}
+
+.login-card .bw-login-center {
+    padding: 25px;
+    /*border: 1px solid #cbcbcb;*/
+    border-radius: 10px;
 }

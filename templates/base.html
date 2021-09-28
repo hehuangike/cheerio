@@ -1,62 +1,54 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="zh-cn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>宜氪数据-IKE-data-{% block title %}{% endblock %}</title>
+    <title>{% block title %}Title{% endblock %}</title>
     <link rel="shortcut icon" href="{% static 'images/logo-small.png' %}">
-    <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/adminlte.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mdui.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/default.css' %}">
+    <link rel="stylesheet" href="{% static 'bw_font/iconfont.css' %}">
     <script src="{% static 'js/jquery.js' %}"></script>
 </head>
-<body class="hold-transition {% if request.user.is_authenticated %}sidebar-mini layout-fixed{% else %}login-page{% endif %}">
 {% if request.user.is_authenticated %}
-    <div class="wrapper">
-        {# 头部 + 抽屉 #}
-        {% include 'Header/index.html' %}
-        {# 页面内容 #}
-        <div class="content-wrapper">
-            {# 内容头部 #}
-            <div class="content-header">
-                <div class="container-fluid">
-                    <div class="row mb-2">
-                        <div class="col-sm-6">
-                            <h1 class="m-0">{% block tab_title %}{% endblock %}</h1>
-                        </div>
-                        <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="/">首页</a></li>
-                                {% block breadcrumb_links %}{% endblock %}
-                            </ol>
-                        </div>
-                    </div>
+    <body class="mdui-bottom-nav-fixed mdui-drawer-body-left mdui-appbar-with-toolbar mdui-theme-primary-indigo mdui-theme-layout-auto mdui-loaded mdui-theme-accent-indigo">
+    {% include 'header.html' %}
+    <div class="mdui-container-fluid">
+        <div class="row mdui-typo">
+            <div class="mdui-col-xs-12 mdui-col-md-6">
+                <div class="mdui-typo bw-container-title">
+                    <h1>{% block page_title %}{% endblock %}<small>{% block page_title_small %}{% endblock %}</small>
+                    </h1>
                 </div>
             </div>
-            {# 内容 #}
-            <section class="content">
-                <div class="container-fluid">
-                    {% block dashboard %}{% endblock %}
-                    {% block analysis_test %}{% endblock %}
-                    {% block analysis %}{% endblock %}
-                    {% block clean %}{% endblock %}
-                    {% block collect %}{% endblock %}
-                </div>
-            </section>
+            <div class="mdui-col-xs-12 mdui-col-md-6 bw_bread_crumbs">
+                <ul style="list-style: none;">
+                    <li class="mdui-float-left"><a href="javascript:"><small>首页</small></a></li>
+                    <li class="mdui-float-left" style="margin: 0 5px"><small>/</small></li>
+                    {% block bread_crumbs %}{% endblock %}
+                </ul>
+            </div>
+            <div class="mdui-col-xs-12 mdui-hidden-sm-down">
+                <div class="mdui-divider"></div>
+            </div>
         </div>
-        {# 页脚 #}
-        {% include 'Footer/index.html' %}
-        {# 右侧配置栏 #}
-        <aside class="control-sidebar control-sidebar-dark">
-            {# 在这里添加配置内容 #}
-        </aside>
+        {% block dashboard %}{% endblock %}
+        {% block analysis_test %}{% endblock %}
+        {% block analysis %}{% endblock %}
+        {% block clean %}{% endblock %}
+        {% block mining %}{% endblock %}
+        {% block collect %}{% endblock %}
     </div>
 {% else %}
-    {% include "login.html" %}
+    <body class="mdui-bottom-nav-fixed">
+    <div class="mdui-container">
+        <div class="row">
+            <div class="mdui-col-xs-12">{% include "login.html" %}</div>
+        </div>
+    </div>
 {% endif %}
-<script src="{% static 'js/adminlte.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+{% include 'footer.html' %}
+<script src="{% static 'js/mdui.min.js' %}"></script>
 </body>
 </html>

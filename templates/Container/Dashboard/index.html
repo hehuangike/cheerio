@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}仪表盘{% endblock %}
+{% block page_title %}仪表盘{% endblock %}
+{% block page_title_small %}Dashboard{% endblock %}
+{% block bread_crumbs %}
+    <li class="mdui-float-left"><small>仪表盘</small></li>
+    <li class="mdui-float-left" style="margin: 0 5px"><small>/</small></li>
+{% endblock %}
+{% block dashboard %}
+    <div class="row">
+        <div class="mdui-col-xs-4">
+            <div class="mdui-card bw-md-card mdui-color-deep-orange-700 mdui-hoverable">
+                <div class="mdui-card-media">
+                    <h1>99<small>%</small></h1>
+                    <img src="{% static 'images/mask1.png' %}" alt="" width="100%" height="24px"/>
+                    <i class="mdui-icon material-icons bw-md-icon">&#xe8cb;</i>
+                    <div class="mdui-card-media-covered">
+                        <div class="mdui-card-primary bw-md-card-primary">
+                            <div class="mdui-card-primary-subtitle mdui-text-center">京东评论</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mdui-col-xs-4">
+            <div class="mdui-card bw-md-card mdui-color-cyan-700 mdui-hoverable">
+                <div class="mdui-card-media">
+                    <h1>1<small>%</small></h1>
+                    <img src="{% static 'images/mask1.png' %}" alt="" width="100%" height="24px"/>
+                    <i class="mdui-icon material-icons bw-md-icon">&#xe6df;</i>
+                    <div class="mdui-card-media-covered">
+                        <div class="mdui-card-primary bw-md-card-primary">
+                            <div class="mdui-card-primary-subtitle mdui-text-center">测试数据</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mdui-col-xs-4">
+            <div class="mdui-card bw-md-card mdui-color-teal-700 mdui-hoverable">
+                <div class="mdui-card-media">
+                    <h1>0<small>%</small></h1>
+                    <img src="{% static 'images/mask1.png' %}" alt="" width="100%" height="24px"/>
+                    <i class="mdui-icon material-icons bw-md-icon">&#xe6dd;</i>
+                    <div class="mdui-card-media-covered">
+                        <div class="mdui-card-primary bw-md-card-primary">
+                            <div class="mdui-card-primary-subtitle mdui-text-center">其他数据</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mdui-typo">
+        <div class="mdui-col-xs-12 mdui-col-sm-6">
+            <div class="mdui-card bw-md-card mdui-hoverable">
+                <div class="mdui-card-media">
+                    <div class="mdui-card-media-covered bw-custom-covered bw-custom-covered-blue-grey mdui-clearfix">
+                        <div class="mdui-card-primary">
+                            <div class="mdui-typo-title-opacity" style="font-weight:700;">数据来源统计</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdui-card-content">
+                    {% include 'DataBlock/echarts_1.html' %}
+                </div>
+            </div>
+        </div>
+        <div class="mdui-col-xs-12 mdui-col-sm-6">
+            <div class="mdui-card bw-md-card mdui-hoverable">
+                <div class="mdui-card-media">
+                    <div class="mdui-card-media-covered bw-custom-covered bw-custom-covered-blue-grey mdui-clearfix">
+                        <div class="mdui-card-primary">
+                            <div class="mdui-typo-title-opacity" style="font-weight:700;">评论情感分析统计</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdui-card-content">
+                    {% include 'DataBlock/echarts_2.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
