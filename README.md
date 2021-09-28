@@ -1,10 +1,8 @@
-## 这是一个教程版的CMDB资产管理系统
+## 这是一个测试版的NLP数据分析系统
 
-## 该教程发布在www.liujiangblog.com上
+## 该系统由宜氪数据科技有限公司开发
 
-## 该教程更新于2019年4月
+## 该系统更新于2021年9月
 
-## 项目基于**Django2.2**、**Adminlet-2.4.10**、Python3.7、Pycharm2018、windows10
-
-## 该项目已经录制了[视频教程](http://www.liujiangblog.com/video/)
+## 项目基于**Django3.2.7**、**Adminlet-3.1**、Python3.8、Pycharm2021、windows10/Linux
 
